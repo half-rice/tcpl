@@ -6,7 +6,7 @@ int max;                  /* maximum length seen so far */
 char line[MAXLINE];       /* current input line */
 char longest[MAXLINE];    /* longest line saved */
 
-int getline(void);
+int getlinelen(void);
 void copy(void);
 
 /* print longest input line */
@@ -16,7 +16,7 @@ main(){
   extern char longest[];
 
   max = 0;
-  while((len = getline()) > 0)
+  while((len = getlinelen()) > 0)
     if(len > max){ 
       max = len;
       copy();
@@ -26,8 +26,8 @@ main(){
   return 0;
 }
 
-/* getline: read a line into s, return length */
-int getline(void){
+/* getline: read a line into line[], return length */
+int getlinelen(void){
   int c, i;
   extern char line[];
 
