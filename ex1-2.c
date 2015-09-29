@@ -2,4 +2,6 @@
 
 main(){
   printf("konichiwa motherfuckers\t.\n");
+
+  return 0;
 }
