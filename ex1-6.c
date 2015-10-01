@@ -6,12 +6,10 @@ main(){
 
   while((c = getchar()) != EOF){
     if(c == 10){
-      printf("inside if");
       break;
     }
     else{
     printf("%d != EOF (%d)\n", c, (c != EOF));
-    /* putchar(c); */
     }
   }
   printf("\n");
