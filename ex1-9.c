@@ -3,21 +3,17 @@
 /* Write a program to copy its input to its output, replacing each 
    string of one or more blanks by a single blank */
 main(){
-  int c, b;
+  int c, x;
 
-  b = 0;
+  x = 'x';
   while((c = getchar()) != EOF){
-    if(c == ' ' && b == 1){
-      b = 0;
-      continue;
-    }
-    else if(c == ' ' && b == 0){
-      b = 1;
-      putchar(c);
+    if(c == ' '){
+      if(
     }
     else{
       putchar(c);
     }
+    x = c;
   }
 
   return 0;
