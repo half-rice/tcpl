@@ -10,7 +10,7 @@ main(){
     if(c == 9){
       printf("\\t");
     }
-    else if(c == 8){
+    else if(c == 8 || c == 32){
       printf("\\b");
     }
     else if(c == 92){
