@@ -8,7 +8,9 @@ main(){
   x = 'x';
   while((c = getchar()) != EOF){
     if(c == ' '){
-      if(
+      if(x != ' '){
+        putchar(c);
+      }
     }
     else{
       putchar(c);
