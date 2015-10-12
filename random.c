@@ -16,6 +16,9 @@ int main(){
       if(count = 8){
         printf("n");
       }
+      if(count = 3){
+        printf("v");
+      }
       if(count = 1){
         printf("x");
       }
