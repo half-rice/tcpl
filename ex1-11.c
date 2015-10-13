@@ -6,7 +6,7 @@
 
 /* How would  you  test the word count program? What kinds of
    input are most likely to uncover bugs if there are any? */
-main(){
+int main(){
   int c, nl, nw, nc, state;
   char x[100] = "wtf-haha()!@^#*> o <> no???\ttest\n\n";
 
@@ -26,4 +26,6 @@ main(){
     }
   }
   printf("%d %d %d\n", nl, nw, nc);
+
+  return 0;
 }
