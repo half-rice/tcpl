@@ -4,7 +4,8 @@
 #define IN  1     /* inside a word */
 #define OUT 0     /* outside a word */
 
-/* count lines, words, and chars in input */
+/* How would  you  test the word count program? What kinds of
+   input are most likely to uncover bugs if there are any? */
 main(){
   int c, nl, nw, nc, state;
   char x[100] = "wtf-haha()!@^#*> o <> no???\ttest\n\n";
