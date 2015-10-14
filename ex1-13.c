@@ -7,7 +7,7 @@
    input. It is easy to draw the histogram with the bars horizontal; a
    vertical orientation is more challenging */
 int main(){
-  int i, c;
+  int i, j, c;
   int state;
   int wordlen;
   int wordcount;
@@ -36,8 +36,15 @@ int main(){
   }
 
   for(i = 0; i < 20; ++i){
-    printf("%d ", histogram[i]);
+    if(histogram[i] > 0){
+      printf("%d ", histogram[i]);
+      for(j = 0; j < histogram[i]; ++j){
+        printf("-");
+      }
+      printf("\n");
+    }
   }
+  printf("\n");
 
   return 0;
 }
