@@ -7,24 +7,36 @@
    input. It is easy to draw the histogram with the bars horizontal; a
    vertical orientation is more challenging */
 int main(){
-  int c, len, state;
+  int i, c;
+  int state;
+  int wordlen;
   int wordcount;
-  int wordlen[20];
+  int histogram[20];
 
-  int i;
-  for(int i = 0; i < 20; ++i)
-    wordlen[i] = 0;
+  for(i = 0; i < 20; ++i)
+    histogram[i] = 0;
 
   state = OUT;
+  wordlen = 0;
   wordcount = 0;
   while((c = getchar()) != EOF){
-    if(c >= 65 || c <= 90 || c >= 97 || c <= 122 && state == OUT){
+    if(c >= 65 && c <= 90 || c >= 97 && c <= 122){
       state = IN;
-      ++len;
+      ++wordlen;
     }
-    else if(c == ' ' || c == '\n' || c == '\t'){
+    else if(c == ' ' || c == '\n' || c == '\t' && wordlen >= 1 && state == IN){
+      state = OUT;
+      histogram[wordcount] = wordlen;
+      ++wordcount;
+      wordlen = 0;
+    }
+    else{
       state = OUT;
     }
+  }
+
+  for(i = 0; i < 20; ++i){
+    printf("%d ", histogram[i]);
   }
 
   return 0;
