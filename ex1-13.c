@@ -8,10 +8,12 @@
    vertical orientation is more challenging */
 int main(){
   int i, j, c;
+  int max;
   int state;
   int wordlen;
   int wordcount;
   int histogram[20];
+  int histogram2[20];
 
   for(i = 0; i < 20; ++i)
     histogram[i] = 0;
@@ -35,6 +37,32 @@ int main(){
     }
   }
 
+  /* vertical histogram */
+  /* copy array for manipulation and set max word length */
+  max = 0;
+  for(i = 0; i < 20; ++i){
+    histogram2[i] = histogram[i]; 
+    if(histogram[i] > max){
+      max = histogram[i];
+    }
+  }
+
+  for(i = 0; i < 20; ++i){
+    if(histogram2[i] = max){
+      printf("| ");
+    }
+    else if(histogram2[i] < max){
+      printf("  ");
+    }
+    else{
+      printf("in mordor");
+    }
+  }
+
+
+
+  /*
+  /* horizontal histogram */
   for(i = 0; i < 20; ++i){
     if(histogram[i] > 0){
       printf("%d ", histogram[i]);
@@ -44,6 +72,8 @@ int main(){
       printf("\n");
     }
   }
+  */
+
   printf("\n");
 
   return 0;
