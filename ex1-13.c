@@ -55,7 +55,7 @@ int main(){
       else if((histogram[j] + i) >= max)
         printf("| ");
       else if((histogram[j] + i) >= max && histogram[j] > 9 && histogram[j] < 100)
-        printf("|  ");
+        printf(" | ");
       else if(histogram[j] < max)
         printf("  ");
       else
