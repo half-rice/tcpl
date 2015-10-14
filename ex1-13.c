@@ -13,7 +13,6 @@ int main(){
   int wordlen;
   int wordcount;
   int histogram[20];
-  int histogram2[20];
 
   for(i = 0; i < 20; ++i)
     histogram[i] = 0;
@@ -41,28 +40,39 @@ int main(){
   /* copy array for manipulation and set max word length */
   max = 0;
   for(i = 0; i < 20; ++i){
-    histogram2[i] = histogram[i]; 
     if(histogram[i] > max){
       max = histogram[i];
     }
   }
 
+  printf("\n\nWord Histogram:\n");
+  for(i = 0; i < max; ++i){
+    for(j = 0; j < 20; ++j){
+      if(histogram[j] >= max && histogram[j] < 10)
+        printf("| ");
+      else if(histogram[j] >= max && histogram[j] > 9 && histogram[j] < 100)
+        printf(" | ");
+      else if((histogram[j] + i) >= max)
+        printf("| ");
+      else if((histogram[j] + i) >= max && histogram[j] > 9 && histogram[j] < 100)
+        printf("|  ");
+      else if(histogram[j] < max)
+        printf("  ");
+      else
+        printf("in mordor");
+    }
+    printf("\n");
+  }
+
   for(i = 0; i < 20; ++i){
-    if(histogram2[i] = max){
-      printf("| ");
-    }
-    else if(histogram2[i] < max){
-      printf("  ");
-    }
-    else{
-      printf("in mordor");
+    if(histogram[i] > 0){
+      printf("%d ", histogram[i]);
     }
   }
 
 
-
-  /*
   /* horizontal histogram */
+  /*
   for(i = 0; i < 20; ++i){
     if(histogram[i] > 0){
       printf("%d ", histogram[i]);
