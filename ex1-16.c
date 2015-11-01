@@ -2,54 +2,52 @@
 
 #define MAXLINE 1000      /* maximum input line size */
 
-int max;                  /* maximum length seen so far */
-char line[MAXLINE];       /* current input line */
-char longest[MAXLINE];    /* longest line saved */
-
-int getlinelen(void);
-void copy(void);
+int lineLen(char line[], int lim);
+void copy(char to[], char from[]);
 
 /* Revise the main routine of the longest-line program so it will correctly 
 print the length of arbitrarily long input lines, and as much as possible 
 of the text */
 int main(){
-  int len;                /* current line length */
-  extern int max;
-  extern char longest[];
+  int len;                  /* current line length */
+  int max;                  /* maximum length seen so far */
+  char line[MAXLINE];       /* current input line */
+  char longest[MAXLINE];    /* longest line saved */
 
   max = 0;
-  while((len = getlinelen()) > 0)
+
+  while((len = lineLen(line, MAXLINE)) > 0)
     if(len > max){ 
       max = len;
-      copy();
+      copy(longest, line);
     }
-  if(max > 0)       /* there was a line */
-    printf("%s", longest);
+  if(max > 0){
+    printf("\n\nThe longest line was:\n%s", longest);
+  }
 
   return 0;
 }
 
-/* getline: read a line into line[], return length */
-int getlinelen(void){
+/* lineLen: read a line into line[], return length */
+int lineLen(char line[], int lim){
   int c, i;
-  extern char line[];
 
-  for(i = 0; i < MAXLINE-1 && (c=getchar()) != EOF && c != '\n'; ++i)
+  for(i = 0; i < lim-1 && (c=getchar()) != EOF && c != '\n'; ++i)
     line[i] = c;
   if(c == '\n'){
     line[i] = c;
     ++i;
   }
+  
   line[i] = '\0';
   return i;
 }
 
-/* copy: copy 'from' into 'to'; assume to is big enough */
-void copy(void){
+/* copy: copy 'from' into 'to' */
+void copy(char to[], char from[]){
   int i;
-  extern char line[], longest[];
 
   i = 0;
-  while((longest[i] = line[i]) != '\0')
+  while((to[i] = from[i]) != '\0')
     ++i;
 }
