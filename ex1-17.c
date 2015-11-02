@@ -51,7 +51,7 @@ void saveLine(char line[], int len){
   extern int lines_counter;
 
   i = 0;
-  while((lines[lines_counter+i] = line[i]) != '\t' && i <= len){
+  while((lines[lines_counter] = line[i]) != '\t' && i <= len){
     ++lines_counter;
     ++i;
   }
