@@ -34,15 +34,27 @@ int line_len(void){
     ++i;
   }
   line[i] = '\0';
+  // printf("line: %s, len: %d\n", line, i);
   return i;
 }
 
 void rev(char og[], char rv[], int len){
   int i;
+  int eol;
 
+  printf("og: %s, len: %d\n", og, len);
+
+  eol = 0;
   i = 0;
-  while((rv[i] = og[(len-2)-i]) != '\0' && (len-2)-i <= 0){
+  while(i < len-1){
+    if(og[i] == '\n')
+      eol = i+1;
+    else if(og[i] == '\0')
+      eol = i;
+
+    rv[i] = og[(len-2)-i];
     ++i;
-    printf("\nog:\n%s\nrv:\n%s\n", og, rv);
   }
+  rv[len] = 'q';
+  printf("og:\n%srv:\n%s\n\n", og, rv);
 }
