@@ -44,24 +44,29 @@ void detab(char to[], char from[], int len){
   int i, j;
   int to_offset;
 
+  printf("--------\n%s\n", from);
+
   i = 0;
   j = 0;
   to_offset = 0;
-  while(i < (len+to_offset)-1){
+  while(i < len){
     if(from[i] == '\t'){
       for(j = 0; j < MAXTAB; ++j){
-        to[(i+to_offset)] = '.';
+        printf("%s\n", to);
+        printf("++++++++\nto[%d] = from[.]\n", i+to_offset);
+        to[i+to_offset] = '.';
         ++to_offset;
       }
+      --to_offset;
     }
     else{
-      printf("to[%d+%d] = from[%d]\n", i, to_offset, from[i]);
+      printf("--------\nto[%d] = from[%c]\n", i+to_offset, from[i]);
       to[i+to_offset] = from[i];
     }
-    printf("i: %d, offset: %d\n", i, to_offset);
-    ++i;
+    // printf("Adding from[ %c ] to to[]...", from[i]);
     printf("%s\n", to);
+    ++i;
   }
 
-  printf("to_offset: %d", to_offset);
+  printf("from: %s\nto: %s\n", from, to);
 }
