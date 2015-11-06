@@ -52,15 +52,15 @@ void detab(char to[], char from[], int len){
   while(i < len){
     if(from[i] == '\t'){
       for(j = 0; j < MAXTAB; ++j){
-        printf("%s\n", to);
-        printf("++++++++\nto[%d] = from[.]\n", i+to_offset);
-        to[i+to_offset] = '.';
+        // printf("%s\n", to);
+        // printf("++++++++\nto[%d] = from[.]\n", i+to_offset);
+        to[i+to_offset] = ' ';
         ++to_offset;
       }
       --to_offset;
     }
     else{
-      printf("--------\nto[%d] = from[%c]\n", i+to_offset, from[i]);
+      // printf("--------\nto[%d] = from[%c]\n", i+to_offset, from[i]);
       to[i+to_offset] = from[i];
     }
     // printf("Adding from[ %c ] to to[]...", from[i]);
@@ -68,5 +68,5 @@ void detab(char to[], char from[], int len){
     ++i;
   }
 
-  printf("from: %s\nto: %s\n", from, to);
+  printf("original line: %s\ndetabbed line: %s\n", from, to);
 }
