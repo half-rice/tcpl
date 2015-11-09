@@ -41,12 +41,6 @@ int line_len(char line[], int lim){
   return i;
 }
 
-struct data{
-  int spaces;
-  int space_locations[100];
-
-}
-
 void entab(char to[], char from[], int len){
   int i;
   int is_space;
@@ -60,26 +54,37 @@ void entab(char to[], char from[], int len){
   spaces = 0;
   offset = 0;
   while(i < len){
-    if(spaces == MAXTAB){
-      offset += MAXTAB-1;
-      to[i-offset] = '\t';
+    printf("\ncopying from[%d], (%c), into to[%d], (%c)\n", i, from[i], i-offset, from[i]);
+    if(spaces == MAXTAB-1){
+      printf("spaces == maxtab!");
+      offset += spaces;
+      is_space = 0;
+      spaces = 0;
+      // to[i-offset] = '\t';
+      to[i-offset] = '>';
+      printf("\ncopying from[%d], (>), into to[%d], (>)\n", i, i-offset);
     }
-
-    if(from[i] == ' ' && is_space == 0){
+    else if(from[i] == ' ' && is_space == 0){
       is_space = 1;
       ++spaces;
       // to[i] = from[i];
-      printf("++spaces, spaces = %d", spaces);
+      printf("copying (_) into to[%d]", i-offset);
+      to[i-offset] = '_';
+      printf("spaces = %d", spaces);
     }
-    else if(from[i] == ' ' && space == 1){
-      ++spaces
-      printf("++spaces, spaces = %d", spaces);
+    else if(from[i] == ' ' && is_space == 1){
+      ++spaces;
+      // to[i] = from[i];
+      printf("+copying (_) into to[%d]", i-offset);
+      to[i-offset] = '_';
+      printf("spaces = %d", spaces);
     }
     else if(from[i] != ' '){
-      if(spaces > 0){
+      if(spaces > 0 && spaces < MAXTAB){
         is_space = 0;
         spaces = 0;
       }
+      to[i-offset] = from[i];
     }
 
     ++i;
