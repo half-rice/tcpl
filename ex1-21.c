@@ -76,8 +76,10 @@ void entab(char to[], char from[], int len){
       printf("++spaces, spaces = %d", spaces);
     }
     else if(from[i] != ' '){
-      is_space = 0;
-      spaces = 0;
+      if(spaces > 0){
+        is_space = 0;
+        spaces = 0;
+      }
     }
 
     ++i;
