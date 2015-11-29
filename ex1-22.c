@@ -56,18 +56,32 @@ void fold(char to[], char from[], int len){
   if(from[MAXLINE-1] > 33 && from[MAXLINE-1] < 126 && from[MAXLINE-1] != '\0'){
     inword = 1;
 
-    x = 0;
+    // set cursor at first whitespace iterating backwards from MAXLINE
+    i = 0;
     while(inword == 1){
-      if(from[(MAXLINE-1)-x] == ' '){
+      if(from[(MAXLINE-1)-i] == ' '){
         inword = 0;
-        cursor = (MAXLINE-1)-x;
+        cursor = (MAXLINE-1)-i;
         break;
       }
 
-      ++x;
+      ++i;
     }
 
-    while(from[cursor-x]
+    // set cursor at the last word of the line below MAXLINE
+    i = 0;
+    while(inword = 0 && cursor > 0){
+      if(from[cursor-i] != ' '){
+        inword = 1;
+        cursor -= i;
+        break;
+      }
+
+      ++i;
+
+    }
+    // while(from[cursor-i] == ' ' || from[cursor-i] == '\t'
+
   }
 
   i = 0;
