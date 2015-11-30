@@ -67,10 +67,11 @@ void fold(char to[], char from[], int len){
 
       ++i;
     }
+    printf("cursor: %d, from[cursor]: %c\n", cursor, from[cursor]);
 
     // set cursor at the last word of the line below MAXLINE
     i = 0;
-    while(inword = 0 && cursor > 0){
+    while(inword == 0 && cursor > 0){
       if(from[cursor-i] != ' '){
         inword = 1;
         cursor -= i;
@@ -80,10 +81,13 @@ void fold(char to[], char from[], int len){
       ++i;
 
     }
-    // while(from[cursor-i] == ' ' || from[cursor-i] == '\t'
+    printf("cursor: %d, from[cursor]: %c\n", cursor, from[cursor]);
 
+
+    // while(from[cursor-i] == ' ' || from[cursor-i] == '\t'
   }
 
+  /*
   i = 0;
   while(i < len){
     // printf("%c", from[i]);
@@ -94,6 +98,7 @@ void fold(char to[], char from[], int len){
     printf("\n");
     ++i;
   }
+  */
 }
 
 /*
