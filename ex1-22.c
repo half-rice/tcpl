@@ -51,7 +51,9 @@ void fold(char to[], char from[], int len){
   int x;
   int cursor;
   int inword = 0;
+  int remember = 0;
 
+  // look at the index at position of MAXLINE as a base starting point 
   cursor = 0;
   if(from[MAXLINE-1] > 33 && from[MAXLINE-1] < 126 && from[MAXLINE-1] != '\0'){
     inword = 1;
@@ -67,6 +69,7 @@ void fold(char to[], char from[], int len){
 
       ++i;
     }
+    remember = cursor+1;
     printf("cursor: %d, from[cursor]: %c\n", cursor, from[cursor]);
 
     // set cursor at the last word of the line below MAXLINE
@@ -79,26 +82,54 @@ void fold(char to[], char from[], int len){
       }
 
       ++i;
-
     }
     printf("cursor: %d, from[cursor]: %c\n", cursor, from[cursor]);
 
 
-    // while(from[cursor-i] == ' ' || from[cursor-i] == '\t'
+    // build new string (append to to[])
+    i = 0;
+    while(i <= cursor){
+      to[i] = from[i];
+      ++i;
+    }
+    to[i] = '\n';
+    ++cursor;
+
+    i = 0;
+    while(i < len-remember){
+      to[cursor+(i+1)] = from[remember+i];
+      printf("---i: %d, to[cursor]: %c, from[remember]: %c\n", i, to[cursor+(i+1)], from[remember+i]);
+      ++i;
+    }
   }
 
-  /*
+  if(len-remember > MAXLINE){
+  }
+
+  // print from[];
+  printf("from[]:\n");
   i = 0;
   while(i < len){
-    // printf("%c", from[i]);
+    printf("%c", from[i]);
+    /*
     if(from[i] > 33 && from[i] < 126 && from[i] != '\0'){
-      // printf(" >");
+      printf(" >");
     }
+    */
 
-    printf("\n");
+    // printf("\n");
     ++i;
   }
-  */
+  printf("\n");
+
+  // print to[]
+  printf("to[]:\n");
+  i = 0;
+  while(i < len){
+    printf("%c", to[i]);
+    ++i;
+  }
+  printf("\n");
 }
 
 /*
