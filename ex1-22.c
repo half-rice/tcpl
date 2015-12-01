@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define MAXSTRING 1000
-#define MAXLINE 7
+#define MAXLINE 10
 
 int string_len(char string[], int lim);
 void fold(char to[], char from[], int len);
@@ -53,7 +53,7 @@ void fold(char to[], char from[], int len){
   int inword = 0;
   int remember = 0;
 
-  // look at the index at position of MAXLINE as a base starting point 
+  // find out if the element in from[] at the index of MAXLiNE-1 is within a word 
   cursor = 0;
   if(from[MAXLINE-1] > 33 && from[MAXLINE-1] < 126 && from[MAXLINE-1] != '\0'){
     inword = 1;
@@ -72,7 +72,7 @@ void fold(char to[], char from[], int len){
     remember = cursor+1;
     printf("cursor: %d, from[cursor]: %c\n", cursor, from[cursor]);
 
-    // set cursor at the last word of the line below MAXLINE
+    // set cursor at the last word(non-space char) of the line below MAXLINE
     i = 0;
     while(inword == 0 && cursor > 0){
       if(from[cursor-i] != ' '){
@@ -111,13 +111,6 @@ void fold(char to[], char from[], int len){
   i = 0;
   while(i < len){
     printf("%c", from[i]);
-    /*
-    if(from[i] > 33 && from[i] < 126 && from[i] != '\0'){
-      printf(" >");
-    }
-    */
-
-    // printf("\n");
     ++i;
   }
   printf("\n");
@@ -131,16 +124,3 @@ void fold(char to[], char from[], int len){
   }
   printf("\n");
 }
-
-/*
-int word_len(char word[], int lim){
-  int c, i;
-
-  for(i = 0; i < lim-1; ++i){
-
-  }
-
-  return i;
-}
-*/
-
